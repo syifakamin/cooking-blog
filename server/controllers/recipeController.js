@@ -85,8 +85,9 @@ exports.searchRecipe = async (req, res) => {
     try {
         let searchTerm = req.body.searchTerm;
         let recipe = await Recipe.find({ $text: { $search: searchTerm, $diacriticSensitive: true } });
+        res.render('search', { title: 'Cooking Blog - Search', recipe });
     } catch (error) {
-        res.render('search', { title: 'Cooking Blog - Search' });
+        res.status(500).send({ message: error.message || "Error Occured" });
 
     }
 }
