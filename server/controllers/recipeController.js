@@ -185,6 +185,14 @@ exports.submitRecipeOnPost = async (req, res) => {
 }
 
 
+exports.contact = async (req, res) => {
+    try {
+        res.render('contact', { title: 'Cooking Blog - Homepage' });
+    } catch (error) {
+        res.status(500).send({ message: error.message || "Error Occured" });
+    }
+}
+
 
 
 // async function insertDymmyRecipeData() {
